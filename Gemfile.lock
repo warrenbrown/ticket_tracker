@@ -39,8 +39,13 @@ GEM
     addressable (2.5.0)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (6.0.4)
+    autoprefixer-rails (6.6.0)
+      execjs
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
     capybara (2.11.0)
@@ -69,6 +74,8 @@ GEM
       factory_girl (~> 4.8.0)
       railties (>= 3.0.0)
     ffi (1.9.14)
+    font-awesome-rails (4.7.0.1)
+      railties (>= 3.2, < 5.1)
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -187,6 +194,9 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
+    simple_form (3.3.1)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (2.0.0)
       activesupport (>= 4.2)
@@ -221,10 +231,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bootstrap-sass (~> 3.3, >= 3.3.7)
   byebug
   capybara (~> 2.11)
   coffee-rails (~> 4.1.0)
   factory_girl_rails (~> 4.8)
+  font-awesome-rails (~> 4.7, >= 4.7.0.1)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails
@@ -232,6 +244,7 @@ DEPENDENCIES
   rspec-rails (~> 3.4, >= 3.4.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form (~> 3.3, >= 3.3.1)
   spring
   sqlite3
   terminal-notifier-guard (~> 1.7)
