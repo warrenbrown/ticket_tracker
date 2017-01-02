@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can edit projects' do
+  let(:author)  { FactoryGirl.create(:user) }
+  let(:project) { FactoryGirl.create(:project) }
+  let(:ticket) do
+    FactoryGirl.create(:ticket, project: project, author: author)
+  end
   before do
     FactoryGirl.create(:project, name: 'Sublime Text 3')
 
