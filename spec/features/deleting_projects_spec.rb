@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.feature 'Users can delete projects' do
+   before do
+     login_as(FactoryGirl.create(:user, :admin))
+   end
   let(:author)  { FactoryGirl.create(:user) }
         let(:project) { FactoryGirl.create(:project) }
         let(:ticket) do
