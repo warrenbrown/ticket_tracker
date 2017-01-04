@@ -1,5 +1,4 @@
 class Admin::ProjectsController < Admin::ApplicationController
-
   def new
     @project = Project.new
   end
