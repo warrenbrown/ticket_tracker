@@ -26,4 +26,18 @@ RSpec.feature 'Admin users can manage a users role' do
     expect(page).to have_content "Internet Explorer: Viewer"
     expect(page).to have_content "Sublime Text 3: Manager"
   end
+
+  scenario 'when assigning roles to new users' do
+    visit admin_user_path(user)
+
+    fill_in 'Email', with: 'newuser@tickettracker.com'
+    fill_in 'Password', with: 'password'
+
+    select 'Editor', from: 'Sublime Text 3'
+    click_button 'Create User'
+
+    click_link 'newuser@tickettracker.com'
+    expect(page).to have_content "Internet Explorer: Editor"
+    expect(page).not_to have_content "Sublime Text 3"
+  end
 end
