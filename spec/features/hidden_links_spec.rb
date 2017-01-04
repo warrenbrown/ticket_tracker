@@ -4,6 +4,9 @@ RSpec.feature 'Users can only see the appropriate links' do
   let(:project) { FactoryGirl.create(:project) }
   let(:user) { FactoryGirl.create(:user) }
   let(:admin) { FactoryGirl.create(:user, :admin) }
+  let(:ticket) do
+    FactoryGirl.create(:ticket, project: project, author: user)
+  end
 
 
   context 'non admin user (project viewers)' do
@@ -33,6 +36,11 @@ RSpec.feature 'Users can only see the appropriate links' do
 
       expect(page).not_to have_link 'New Ticket'
     end
+
+    scenario 'can not see Edit Ticket link' do
+      visit project_ticket_path(project, ticket)
+      expect(page).not_to have_link 'Edit Ticket'
+    end
   end
 
   context 'Admin users' do
@@ -60,6 +68,10 @@ RSpec.feature 'Users can only see the appropriate links' do
       visit project_path(project)
 
       expect(page).to have_link 'New Ticket'
+    end
+
+    scenario 'admin users can see the Edit Ticket link' do
+      visit project_ticket_path(project, ticket)
     end
   end
 end
