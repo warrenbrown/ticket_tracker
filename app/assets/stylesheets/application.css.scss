@@ -120,3 +120,20 @@
      line-height: 24px !important;
   }
 }
+
+.roles {
+  @extend .table;
+  @extend .form-horizontal;
+  tr:first-child {
+    td,
+    th {
+      border-top: 0;
+    }
+  }
+  label {
+    @extend .control-label;
+  }
+  select {
+    @extend .form-control;
+  }
+}
