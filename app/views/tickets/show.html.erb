@@ -30,7 +30,7 @@
   <%= simple_format(@ticket.description) %>
 
   <% if @ticket.attachment.present? %>
-    <h4>Attachmens</h4>
+    <h4>Attachments</h4>
     <div class="attachment">
       <p>
         <%= link_to File.basename(@ticket.attachment.url), @ticket.attachment.url %>
