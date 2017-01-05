@@ -137,3 +137,7 @@
     @extend .form-control;
   }
 }
+
+blockquote.comment p {
+  font-size: 14px;
+}

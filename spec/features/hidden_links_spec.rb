@@ -46,6 +46,11 @@ RSpec.feature 'Users can only see the appropriate links' do
       visit project_ticket_path(project, ticket)
       expect(page).not_to have_link 'Delete Ticket'
     end
+
+    scenario 'can not see comment form' do
+      visit project_ticket_path(project, ticket)
+      expect(page).not_to have_heading 'New Comment'
+    end
   end
 
   context 'Admin users' do
@@ -84,5 +89,10 @@ RSpec.feature 'Users can only see the appropriate links' do
       visit project_ticket_path(project, ticket)
       expect(page).to have_link 'Delete Ticket'
     end
-  end
+
+    scenario 'admin user can see the comments form' do
+      visit project_ticket_path(project, ticket)
+      expect(page).to have_heading 'New Comment'
+    end
+   end
 end
