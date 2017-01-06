@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_ticket
 
+
   def create
     @comment = @ticket.comments.build(comment_params)
     @author = current_user
@@ -23,6 +24,6 @@ class CommentsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:text)
+      params.require(:comment).permit(:text, :state_id)
     end
 end

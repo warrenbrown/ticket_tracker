@@ -18,6 +18,7 @@ RSpec.feature 'Users can create comments' do
     expect(page).to have_content 'Comment has been created.'
     within('#comments') do
       expect(page).to have_content 'Added a comment'
+      expect(page).to have_content user.email
     end
   end
 
@@ -26,5 +27,17 @@ RSpec.feature 'Users can create comments' do
     click_button 'Create Comment'
 
     expect(page).to have_content 'Comment has not been created.'
+  end
+
+  scenario 'when changing a tickets state' do
+    FactoryGirl.create(:state)
+    visit project_ticket_path(project, ticket)
+    fill_in 'Text', with: 'This is a real issue'
+    select 'Open', from: 'State'
+    click_button 'Create Comment'
+
+    within('#ticket .state') do
+      expect(page).to have_content 'Open'
+    end
   end
 end
