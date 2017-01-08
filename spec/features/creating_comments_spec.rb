@@ -43,4 +43,11 @@ RSpec.feature 'Users can create comments' do
       expect(page).to have_content 'state changed to Open'
     end
   end
+
+  scenario 'but can not change states without permission' do
+    assign_role!(user, :editor, project)
+    visit project_ticket_path(project, ticket)
+
+    expect(page).not_to have_select 'State'
+  end
 end
