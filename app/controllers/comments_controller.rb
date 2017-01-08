@@ -3,7 +3,13 @@ class CommentsController < ApplicationController
 
 
   def create
-    @comment = @ticket.comments.build(comment_params)
+    whitelisted_params = comment_params
+
+    unless policy(@ticket).change_state?
+      whitelisted_params.delete(:state_id)
+    end
+
+    @comment = @ticket.comments.build(whitelisted_params)
     @author = current_user
     authorize @comment, :create?
 
