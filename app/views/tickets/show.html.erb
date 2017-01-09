@@ -29,11 +29,13 @@
        <th>State:</th>
        <td><%= render @ticket.state %></td>
      </tr>
-     <tr id='tags'>
-       <th>Tags</th>
-       <td><%= render @ticket.tags %></td>
-     </tr>
-  <% end %>
+     <% if @ticket.tags.any? %>
+      <tr id="tags">
+        <th>Tags:</th>
+        <td><%= render @ticket.tags, ticket: @ticket %></td>
+      </tr>
+     <% end %>
+   ß<% end %>
 </table>
 
 
