@@ -23,4 +23,17 @@ RSpec.describe CommentsController, type: :controller do
       expect(ticket.state).to be_nil
     end
   end
+
+  context 'user without permission to tag a ticket' do
+    before do
+      assign_role!(user, :editor, project)
+      sign_in user
+    end
+
+    it 'cann not tag a ticket when creating a comment' do
+      post :create,  { comment: { text: 'Tag!', tag_names: 'one two '}, ticket_id: ticket }
+      ticket.reload
+      expect(ticket.tags).to be_empty
+    end
+  end
 end
