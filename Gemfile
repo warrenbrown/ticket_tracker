@@ -41,6 +41,10 @@ group :development, :test do
   gem "database_cleaner", "~> 1.4"
 end
 
+group :test do
+  gem "email_spec", "~> 1.6.0"
+end
+
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
