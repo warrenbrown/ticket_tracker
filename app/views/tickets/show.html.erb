@@ -30,12 +30,19 @@
        <td><%= render @ticket.state %></td>
      </tr>
      <% if @ticket.tags.any? %>
-      <tr id="tags">
+      <tr id="ticket tags">
         <th>Tags:</th>
         <td><%= render @ticket.tags, ticket: @ticket %></td>
       </tr>
+      <tr id="watchers">
+        <th>Watchers:</th>
+        <td>
+          <%= toggle_watching_button(@ticket) %><br />
+          <%= @ticket.watchers.map(&:email).to_sentence %>
+        </td>
+      </tr>
      <% end %>
-   ß<% end %>
+   <% end %>
 </table>
 
 

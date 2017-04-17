@@ -28,7 +28,7 @@ RSpec.feature 'Admin users can manage a users role' do
   end
 
   scenario 'when assigning roles to new users' do
-    visit admin_user_path(user)
+    visit new_admin_user_path(user)
 
     fill_in 'Email', with: 'newuser@tickettracker.com'
     fill_in 'Password', with: 'password'
